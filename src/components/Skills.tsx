@@ -1,0 +1,47 @@
+"use client";
+
+import { skillCategories } from "@/data/skills";
+import { ScrollReveal } from "./ScrollReveal";
+
+export function Skills() {
+  return (
+    <section id="skills" className="py-24 px-6 border-t border-border">
+      <div className="max-w-6xl mx-auto">
+        <ScrollReveal>
+          <div className="flex items-center gap-4 mb-16">
+            <span className="text-[10px] font-mono tracking-widest text-gold">
+              04
+            </span>
+            <div className="h-px flex-1 bg-border" />
+            <h2 className="text-xs tracking-[0.3em] uppercase text-text-secondary">
+              Technical Skills
+            </h2>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+        </ScrollReveal>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skillCategories.map((cat, i) => (
+            <ScrollReveal key={cat.category} delay={i * 80}>
+              <div className="space-y-4">
+                <h3 className="text-[10px] font-mono tracking-widest text-gold">
+                  {cat.category}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="text-xs text-text-secondary border border-border px-3 py-1.5 hover:border-gold/20 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
