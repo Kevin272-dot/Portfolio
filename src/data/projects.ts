@@ -149,7 +149,7 @@ export const projects: Project[] = [
       "An IoT-based plant monitoring system that tracks environmental conditions and provides real-time alerts for plant care.",
     tags: ["IoT", "Sensors", "Real-Time Monitoring", "Python", "Embedded Systems"],
     github: "https://github.com/Kevin272-dot/smart-plant-monitoring-system-",
-    live: "https://smart-plant-monitoring-system-khaki.vercel.app",
+    live: "https://smartplantmonitoringsystem-qtlrlzu0k-l-kevin-daniels-projects.vercel.app/",
     category: "Featured Applications",
     featured: true,
     order: 11,
