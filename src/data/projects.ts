@@ -183,6 +183,7 @@ export const projects: Project[] = [
       "A database systems project that translates Tuple Relational Calculus and Domain Relational Calculus queries into relational algebra.",
     tags: ["Database Systems", "Query Languages", "Compiler Design", "Relational Algebra"],
     github: "https://github.com/Kevin272-dot/Tuple-and-Domain-Relational-Calculus-Translator",
+    live: "https://trc-translator.lrkevindaniel.workers.dev",
     category: "AI/ML and Data Projects",
     featured: true,
     order: 14,
