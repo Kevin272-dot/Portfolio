@@ -17,24 +17,38 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "L Kevin Daniel — Software Engineer | Systems Builder",
+  title: "Kevin272-dot — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
   description:
-    "Computer Science student, software engineer and technical leader building real-time systems, cloud-native applications, AI-powered tools and developer infrastructure.",
+    "Full-stack developer and AI/ML enthusiast building web applications, intelligent systems, productivity tools, and hackathon projects.",
   keywords: [
-    "software engineer",
-    "systems builder",
-    "computer science",
-    "distributed systems",
-    "cloud-native",
-    "real-time systems",
-    "technical leadership",
+    "full-stack developer",
+    "software developer",
+    "AI/ML",
+    "web applications",
+    "hackathon projects",
+    "productivity tools",
+    "Next.js",
+    "React",
+    "Python",
+    "machine learning",
   ],
   openGraph: {
-    title: "L Kevin Daniel — Software Engineer | Systems Builder",
+    title: "Kevin272-dot — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
     description:
-      "Computer Science student, software engineer and technical leader building real-time systems, cloud-native applications, AI-powered tools and developer infrastructure.",
+      "Full-stack developer and AI/ML enthusiast building web applications, intelligent systems, productivity tools, and hackathon projects.",
     type: "website",
     locale: "en_US",
+    url: "https://github.com/Kevin272-dot/Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kevin272-dot — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
+    description:
+      "Full-stack developer and AI/ML enthusiast building web applications, intelligent systems, productivity tools, and hackathon projects.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

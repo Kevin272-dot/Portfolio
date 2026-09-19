@@ -1,65 +1,64 @@
 export const profile = {
-  name: "L. Kevin Daniel",
+  name: "Kevin272-dot",
   shortName: "Kevin",
-  title: "Software Engineer | Systems Builder",
-  email: "lrkevindaniel@gmail.com",
+  title: "Full-Stack Developer | Software Developer | AI/ML Enthusiast",
+  email: "placeholder@email.com",
   github: "https://github.com/Kevin272-dot",
-  linkedin: "[ADD LINK]",
-  portfolioUrl: "[PORTFOLIO URL]",
+  linkedin: "https://www.linkedin.com/in/l-kevin-daniel-3a2979392/",
+  portfolioUrl: "https://github.com/Kevin272-dot/Portfolio",
 
   hero: {
     headline: [
-      "Building systems.",
-      "Leading technology.",
-      "Exploring what's next.",
+      "Building web apps.",
+      "Crafting intelligent systems.",
+      "Shipping at hackathons.",
     ],
     supporting:
-      "Computer Science student and software engineer building real-world products, cloud-native systems and developer infrastructure, while leading technology initiatives and exploring systems research.",
+      "Full-stack developer and AI/ML enthusiast building web applications, intelligent systems, productivity tools, and hackathon projects. Focused on clean code, real-world impact, and continuous learning.",
     tags: [
-      "SYSTEMS",
-      "CLOUD",
-      "AI",
-      "SOFTWARE ENGINEERING",
-      "TECHNICAL LEADERSHIP",
-      "RESEARCH",
+      "FULL-STACK",
+      "SOFTWARE DEV",
+      "AI/ML",
+      "HACKATHONS",
+      "AUTOMATION",
+      "PRODUCTIVITY",
     ],
   },
 
   about: {
     paragraphs: [
-      "I'm a Computer Science student at VIT Chennai who is more interested in understanding how software systems work internally than in assembling frameworks. My work spans distributed systems, real-time collaboration infrastructure, cloud-native architectures, and AI-driven tooling.",
-      "I currently serve as Tech Director at 180 Degrees Consulting — VIT Chennai, where I take technical ownership of digital infrastructure and lead technology initiatives across the organization.",
-      "My research interests sit at the intersection of systems engineering, distributed consistency, knowledge representation, and machine learning. I'm working toward turning substantive engineering projects into academic contributions.",
+      "I'm a full-stack developer with a strong focus on building web applications, intelligent systems, and automation tools. My work spans frontend interfaces, backend APIs, database design, and AI/ML pipelines.",
+      "I have hands-on experience building production-oriented platforms, contributing to organizational infrastructure, and shipping projects under hackathon time constraints. I enjoy turning complex problems into clean, functional software.",
+      "My interests include artificial intelligence and machine learning, full-stack web development, database and systems design, automation and productivity tooling, and collaborative team-based project delivery.",
     ],
     interests: [
-      "Computer Science",
+      "Full-Stack Web Development",
       "Software Engineering",
-      "Distributed / Real-Time Systems",
-      "Cloud Infrastructure",
-      "Artificial Intelligence",
-      "Technical Leadership",
-      "Systems Research",
+      "Artificial Intelligence & Machine Learning",
+      "Automation & Productivity Tools",
+      "Database & Systems Development",
+      "Hackathon & Collaborative Projects",
     ],
   },
 
   philosophy: [
     {
       number: "01",
-      title: "UNDERSTAND THE SYSTEM",
-      description:
-        "Don't just use abstractions. Understand what happens underneath them.",
-    },
-    {
-      number: "02",
       title: "BUILD FOR REAL USE",
       description:
         "Prefer projects that solve real problems and can actually be deployed.",
     },
     {
-      number: "03",
-      title: "TURN ENGINEERING INTO LEARNING",
+      number: "02",
+      title: "UNDERSTAND THE STACK",
       description:
-        "Use difficult engineering problems as opportunities to investigate deeper questions.",
+        "Don't just use abstractions. Understand what happens underneath them.",
+    },
+    {
+      number: "03",
+      title: "SHIP AND ITERATE",
+      description:
+        "Get working software out the door, then improve it based on real feedback.",
     },
   ],
 };

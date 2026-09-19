@@ -2,30 +2,36 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { profile } from "@/data/profile";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/#about", label: "About" },
   { href: "/#projects", label: "Projects" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#research", label: "Research" },
   { href: "/#contact", label: "Contact" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   const closeMobile = () => setMobileOpen(false);
 
@@ -51,22 +57,19 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "text-xs tracking-widest uppercase transition-colors",
-                pathname === link.href
-                  ? "text-gold"
-                  : "text-text-secondary hover:text-off-white"
-              )}
+              className="text-xs tracking-widest uppercase text-text-secondary hover:text-off-white transition-colors"
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/resume"
-            className="text-xs tracking-widest uppercase text-gold border border-gold/30 px-4 py-2 hover:bg-gold/10 transition-colors"
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs tracking-widest uppercase text-gold border border-gold/30 px-4 py-2 hover:bg-gold/10 transition-all duration-200"
           >
-            Resume
-          </Link>
+            GitHub
+          </a>
         </div>
 
         <button
@@ -79,30 +82,32 @@ export function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden bg-near-black/95 backdrop-blur-md border-t border-border">
-          <div className="flex flex-col px-6 py-4 gap-4">
-            {navLinks.map((link) => (
+        <div className="md:hidden bg-near-black/98 backdrop-blur-lg border-t border-border">
+          <div className="flex flex-col px-6 py-6 gap-2">
+            {navLinks.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={closeMobile}
-                className={cn(
-                  "text-sm tracking-widest uppercase py-2 transition-colors",
-                  pathname === link.href
-                    ? "text-gold"
-                    : "text-text-secondary hover:text-off-white"
-                )}
+                className="text-sm tracking-widest uppercase py-3 text-text-secondary hover:text-off-white transition-colors border-b border-border/50"
+                style={{
+                  animationDelay: `${i * 50}ms`,
+                  opacity: 0,
+                  animation: `fadeInUp 0.3s ease-out ${i * 50}ms forwards`,
+                }}
               >
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/resume"
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeMobile}
-              className="text-sm tracking-widest uppercase text-gold border border-gold/30 px-4 py-3 text-center hover:bg-gold/10 transition-colors"
+              className="text-sm tracking-widest uppercase text-gold border border-gold/30 px-4 py-3 text-center hover:bg-gold/10 transition-all duration-200 mt-2"
             >
-              Resume
-            </Link>
+              GitHub
+            </a>
           </div>
         </div>
       )}

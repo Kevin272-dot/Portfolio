@@ -4,23 +4,65 @@ import { experiences } from "@/data/experience";
 import { skillCategories } from "@/data/skills";
 import { research } from "@/data/research";
 import { projects } from "@/data/projects";
+import { Download, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Resume — L Kevin Daniel",
-  description: "Technical resume of L. Kevin Daniel — Software Engineer, Systems Builder, Computer Science Student.",
+  description:
+    "Technical resume of L. Kevin Daniel — Software Engineer, Systems Builder, Computer Science Student.",
 };
 
 export default function ResumePage() {
   return (
     <div className="pt-32 pb-24 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
+        {/* Header with download */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-off-white mb-1">
+              Resume
+            </h1>
+            <p className="text-xs text-text-tertiary font-mono tracking-wider">
+              VIEW ONLINE OR DOWNLOAD PDF
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <a
+              href="/L_Kevin_Daniel_Resume.pdf"
+              download
+              className="inline-flex items-center gap-2 bg-gold text-near-black px-5 py-2.5 text-xs font-medium tracking-wider hover:bg-gold-dim transition-colors"
+            >
+              <Download size={14} />
+              DOWNLOAD PDF
+            </a>
+            <a
+              href="/L_Kevin_Daniel_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-xs font-medium tracking-wider text-text-secondary hover:text-off-white hover:border-border-hover transition-colors"
+            >
+              <ExternalLink size={14} />
+              OPEN IN NEW TAB
+            </a>
+          </div>
+        </div>
+
+        {/* Embedded PDF Viewer */}
+        <div className="mb-12 border border-border bg-near-black-light overflow-hidden">
+          <iframe
+            src="/L_Kevin_Daniel_Resume.pdf"
+            className="w-full h-[800px] sm:h-[1000px]"
+            title="Resume PDF Viewer"
+          />
+        </div>
+
         {/* Resume content — designed for print/PDF */}
         <div className="bg-near-black border border-border p-8 sm:p-12 print:p-8 print:border-none">
           {/* Header */}
           <header className="mb-8 border-b border-border pb-6">
-            <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-off-white mb-2">
+            <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-off-white mb-2">
               {profile.name}
-            </h1>
+            </h2>
             <p className="text-sm text-text-secondary mb-4">
               Computer Science Student | Software Engineer | Systems Builder
             </p>
@@ -39,8 +81,14 @@ export default function ResumePage() {
               >
                 github.com/Kevin272-dot
               </a>
-              <span>LinkedIn: [ADD LINK]</span>
-              <span>Portfolio: [PORTFOLIO URL]</span>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold transition-colors"
+              >
+                linkedin.com/in/lkevindaniel
+              </a>
             </div>
           </header>
 
@@ -55,11 +103,11 @@ export default function ResumePage() {
                   VIT Chennai
                 </h3>
                 <span className="text-xs text-text-tertiary font-mono">
-                  [DATES]
+                  2023 — 2027
                 </span>
               </div>
               <p className="text-xs text-text-secondary">
-                [DEGREE] — [CGPA]
+                B.Tech Computer Science — CGPA: 8.5+
               </p>
             </div>
           </section>
@@ -88,7 +136,7 @@ export default function ResumePage() {
                       key={i}
                       className="text-xs text-text-secondary leading-relaxed flex gap-2"
                     >
-                      <span className="text-gold/40 mt-0.5">•</span>
+                      <span className="text-gold/40 mt-0.5">&#x2022;</span>
                       {desc}
                     </li>
                   ))}
@@ -120,9 +168,6 @@ export default function ResumePage() {
                       </a>
                     )}
                   </div>
-                  <p className="text-[10px] text-gold/70 mb-1">
-                    {project.subtitle}
-                  </p>
                   <p className="text-xs text-text-secondary leading-relaxed">
                     {project.description}
                   </p>
@@ -153,7 +198,7 @@ export default function ResumePage() {
                     {cat.category}
                   </span>
                   <p className="text-xs text-text-secondary">
-                    {cat.skills.join(" · ")}
+                    {cat.skills.join(" \u00B7 ")}
                   </p>
                 </div>
               ))}
@@ -170,10 +215,12 @@ export default function ResumePage() {
                 {research.primary.title} — {research.primary.subtitle}
               </h3>
               <p className="text-xs text-text-secondary">
-                {research.primary.status} · Target: {research.primary.target}
+                {research.primary.status} &#x00B7; Target:{" "}
+                {research.primary.target}
               </p>
               <p className="text-xs text-text-tertiary mt-1">
-                Intersection: {research.primary.intersection.join(" + ")}
+                Intersection:{" "}
+                {research.primary.intersection.join(" + ")}
               </p>
             </div>
           </section>

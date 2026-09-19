@@ -1,7 +1,7 @@
 export const skillCategories = [
   {
     category: "LANGUAGES",
-    skills: ["[VERIFY]", "C++", "C", "Python", "Java", "JavaScript", "TypeScript", "SQL"],
+    skills: ["C++", "C", "Python", "Java", "JavaScript", "TypeScript", "SQL", "HTML/CSS"],
   },
   {
     category: "WEB",
@@ -37,7 +37,7 @@ export const skillCategories = [
   },
   {
     category: "DATABASES",
-    skills: ["[ADD VERIFIED DATABASES]"],
+    skills: ["PostgreSQL", "Redis", "SQLite", "MongoDB"],
   },
   {
     category: "CORE CS",

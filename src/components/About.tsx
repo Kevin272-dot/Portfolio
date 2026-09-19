@@ -34,15 +34,15 @@ export function About() {
           <ScrollReveal delay={200}>
             <div className="space-y-4">
               <h3 className="text-[10px] font-mono tracking-widest text-gold mb-6">
-                INTERESTS
+                FOCUS AREAS
               </h3>
               <div className="space-y-3">
                 {profile.about.interests.map((interest) => (
                   <div
                     key={interest}
-                    className="flex items-center gap-3 text-sm text-text-secondary"
+                    className="flex items-center gap-3 text-sm text-text-secondary group"
                   >
-                    <div className="w-1 h-1 bg-gold/40" />
+                    <div className="w-1 h-1 bg-gold/40 group-hover:bg-gold transition-colors" />
                     {interest}
                   </div>
                 ))}

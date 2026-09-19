@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-border py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-text-tertiary tracking-wider">
-          © {new Date().getFullYear()} {profile.name}. All rights reserved.
+          &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
           <Link
@@ -17,20 +17,24 @@ export function Footer() {
           >
             GitHub
           </Link>
-          {profile.linkedin !== "[ADD LINK]" && (
+          {profile.linkedin && (
             <Link
               href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs text-text-tertiary hover:text-text-secondary transition-colors tracking-wider"
             >
               LinkedIn
             </Link>
           )}
-          <a
-            href={`mailto:${profile.email}`}
-            className="text-xs text-text-tertiary hover:text-text-secondary transition-colors tracking-wider"
-          >
-            Email
-          </a>
+          {profile.email && (
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-xs text-text-tertiary hover:text-text-secondary transition-colors tracking-wider"
+            >
+              Email
+            </a>
+          )}
         </div>
       </div>
     </footer>

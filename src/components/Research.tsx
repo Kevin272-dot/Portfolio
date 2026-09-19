@@ -22,7 +22,7 @@ export function Research() {
 
         {/* Primary research */}
         <ScrollReveal>
-          <div className="border border-border p-8 mb-8 hover:border-gold/15 transition-colors">
+          <div className="border border-border p-8 mb-8 hover:border-gold/15 transition-all duration-300 bg-gradient-to-br from-near-black-light/40 to-transparent hover:from-near-black-light/70">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <span className="text-[10px] font-mono tracking-widest text-gold mb-2 block">
@@ -49,7 +49,7 @@ export function Research() {
                 {research.primary.intersection.map((item) => (
                   <span
                     key={item}
-                    className="text-[10px] font-mono tracking-wider text-gold/70 border border-gold/15 px-3 py-1"
+                    className="text-[10px] font-mono tracking-wider text-gold/70 border border-gold/15 px-3 py-1 hover:border-gold/30 hover:text-gold/90 transition-colors"
                   >
                     {item}
                   </span>
@@ -68,7 +68,7 @@ export function Research() {
                       {step}
                     </span>
                     {i < research.primary.pipeline.length - 1 && (
-                      <span className="text-text-tertiary">→</span>
+                      <span className="text-text-tertiary">&#x2192;</span>
                     )}
                   </div>
                 ))}
@@ -79,7 +79,7 @@ export function Research() {
 
         {/* Secondary research */}
         <ScrollReveal delay={100}>
-          <div className="border border-border p-8 mb-12 hover:border-gold/15 transition-colors">
+          <div className="border border-border p-8 mb-12 hover:border-gold/15 transition-all duration-300 bg-gradient-to-br from-near-black-light/30 to-transparent hover:from-near-black-light/60">
             <h3 className="text-lg font-light text-off-white mb-2">
               {research.secondary.title}
             </h3>
@@ -109,7 +109,7 @@ export function Research() {
               {research.interests.map((interest) => (
                 <span
                   key={interest}
-                  className="text-xs text-text-secondary border border-border px-4 py-2"
+                  className="text-xs text-text-secondary border border-border px-4 py-2 hover:border-gold/20 hover:text-off-white transition-all duration-200 cursor-default"
                 >
                   {interest}
                 </span>

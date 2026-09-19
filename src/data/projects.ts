@@ -1,269 +1,201 @@
+export type ProjectCategory =
+  | "Featured Applications"
+  | "Full-Stack Projects"
+  | "AI/ML and Data Projects"
+  | "Hackathon Projects"
+  | "Organization and Team Projects";
+
 export interface Project {
   id: string;
   title: string;
-  subtitle: string;
   description: string;
   tags: string[];
-  github?: string;
+  github: string;
   live?: string;
+  membersPage?: string;
+  category: ProjectCategory;
   featured: boolean;
   order: number;
-  slug: string;
 }
+
+export const categories: ProjectCategory[] = [
+  "Featured Applications",
+  "Full-Stack Projects",
+  "AI/ML and Data Projects",
+  "Hackathon Projects",
+  "Organization and Team Projects",
+];
 
 export const projects: Project[] = [
   {
-    id: "synapse",
-    title: "SYNAPSE",
-    subtitle: "Cloud-Native Real-Time Collaborative Knowledge Platform",
+    id: "180dc-admin",
+    title: "180DC Admin Website",
     description:
-      "Synapse is a cloud-native, real-time collaborative document platform that combines rich-text editing with AI-driven knowledge management.",
-    tags: [
-      "Next.js",
-      "TipTap",
-      "Custom Operational Transformation",
-      "Socket.IO",
-      "Redis",
-      "AWS",
-    ],
-    github: "https://github.com/Kevin272-dot",
+      "Production-oriented admin platform for 180 Degrees Consulting, built with a monorepo architecture featuring Cloudflare Workers, public API, and job processing pipeline.",
+    tags: ["Turborepo", "Cloudflare Workers", "TypeScript", "Public API", "Admin API"],
+    github: "https://github.com/Kevin272-dot/180dc-admin-website",
+    live: "https://180dcvitc.org",
+    membersPage: "https://180dcvitc.org/members",
+    category: "Organization and Team Projects",
     featured: true,
     order: 1,
-    slug: "synapse",
-  },
-  {
-    id: "club-management",
-    title: "Advanced Club Management System",
-    subtitle: "Organizational Management Platform",
-    description:
-      "An advanced management system built for organizational operations, providing a production-oriented platform for club management.",
-    tags: ["[ADD TECH STACK]"],
-    github: "https://github.com/Kevin272-dot",
-    featured: true,
-    order: 2,
-    slug: "club-management-system",
   },
   {
     id: "mcp",
     title: "MCP",
-    subtitle: "Understanding the Why and the What",
     description:
       "A protocol engineering project implementing a real JSON-RPC 2.0 MCP endpoint with live React Flow visualization, filesystem tools, and sandboxed access.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "React Flow",
-      "Puppeteer",
-      "JSON-RPC 2.0",
-      "Event-Driven Architecture",
-    ],
-    github: "https://github.com/Kevin272-dot",
+    tags: ["Next.js", "TypeScript", "React Flow", "JSON-RPC 2.0", "Event-Driven Architecture"],
+    github: "https://github.com/Kevin272-dot/MCP",
+    live: "https://mcp-peach-five.vercel.app",
+    category: "Featured Applications",
+    featured: true,
+    order: 2,
+  },
+  {
+    id: "v-vortex",
+    title: "V-Vortex Hackathon",
+    description:
+      "Hackathon project built for the V-Vortex event, showcasing rapid prototyping, full-stack development, and collaborative engineering under time constraints.",
+    tags: ["Full-Stack", "Hackathon", "Rapid Prototyping", "Team Project"],
+    github: "https://github.com/Kevin272-dot/V-Vortex-Hackathon",
+    live: "https://v-vortex-hackathon-git-main-l-kevin-daniels-projects.vercel.app/",
+    category: "Hackathon Projects",
     featured: true,
     order: 3,
-    slug: "mcp",
   },
   {
-    id: "qnn-vs-mlp",
-    title: "QNN vs MLP",
-    subtitle: "Quantum Neural Network vs Classical MLP",
+    id: "slingshot-expo",
+    title: "Slingshot EXPO",
     description:
-      "An experimental comparison of a Quantum Neural Network with a classical MLP on binary classification using variational quantum circuits.",
-    tags: ["PennyLane", "PyTorch", "scikit-learn", "NumPy", "Matplotlib"],
-    github: "https://github.com/Kevin272-dot",
+      "A polished web application built for the Slingshot EXPO event, featuring responsive design and modern frontend practices.",
+    tags: ["Next.js", "Responsive Design", "Frontend", "Event Platform"],
+    github: "https://github.com/Kevin272-dot/Slingshot-EXPO",
+    live: "https://slingshot-expo.vercel.app",
+    category: "Hackathon Projects",
     featured: true,
     order: 4,
-    slug: "qnn-vs-mlp",
   },
   {
-    id: "180dc-admin",
-    title: "180DC Admin Platform",
-    subtitle: "Production-Oriented Web Infrastructure",
+    id: "synapse",
+    title: "Synapse",
     description:
-      "Production-oriented web infrastructure for 180 Degrees Consulting, built with a monorepo architecture using Turborepo, Cloudflare Workers, and Wrangler.",
-    tags: [
-      "Turborepo",
-      "Cloudflare Workers",
-      "Wrangler",
-      "Public API",
-      "Admin API",
-      "Job Processor",
-    ],
-    github: "https://github.com/Kevin272-dot/180dc-admin-website",
+      "A cloud-native, real-time collaborative document platform combining rich-text editing with AI-driven knowledge management, custom Operational Transformation, and live knowledge graphs.",
+    tags: ["Next.js", "TipTap", "Operational Transformation", "Socket.IO", "Redis", "AWS"],
+    github: "https://github.com/Kevin272-dot/Synapse",
+    category: "Featured Applications",
     featured: true,
     order: 5,
-    slug: "180dc-admin-platform",
-  },
-];
-
-export const otherProjects = [
-  {
-    id: "automl",
-    title: "AutoML Framework",
-    github: "https://github.com/Kevin272-dot",
-  },
-  {
-    id: "trc-translator",
-    title: "Tuple & Domain Relational Calculus Translator",
-    github: "https://github.com/Kevin272-dot",
-  },
-  {
-    id: "smart-plant",
-    title: "Smart Plant Monitoring System",
-    github: "https://github.com/Kevin272-dot/smart-plant-monitoring-system-",
-  },
-  {
-    id: "vortex",
-    title: "The Vortex App",
-    github: "https://github.com/Kevin272-dot",
-  },
-  {
-    id: "slingshot",
-    title: "Slingshot-EXPO",
-    github: "https://github.com/Kevin272-dot",
   },
   {
     id: "productivity-agent",
     title: "Personal Productivity Agent",
+    description:
+      "An AI-powered personal productivity agent designed to automate task management, scheduling, and workflow optimization using intelligent decision-making.",
+    tags: ["AI", "Python", "Automation", "Agent Architecture", "LLM"],
+    github: "https://github.com/Kevin272-dot/Personal-Productivity-Agent",
+    category: "AI/ML and Data Projects",
+    featured: true,
+    order: 6,
+  },
+  {
+    id: "vortex-app",
+    title: "The Vortex App",
+    description:
+      "A full-stack application built as part of the Vortex ecosystem, featuring modern web architecture and real-time capabilities.",
+    tags: ["Full-Stack", "Real-Time", "Modern Architecture"],
+    github: "https://github.com/Kevin272-dot/The-Vortex-app",
+    category: "Full-Stack Projects",
+    featured: true,
+    order: 7,
+  },
+  {
+    id: "automl",
+    title: "AutoML Framework",
+    description:
+      "An automated machine learning framework that streamlines model selection, hyperparameter tuning, and evaluation for classification and regression tasks.",
+    tags: ["Python", "Machine Learning", "AutoML", "scikit-learn", "Data Pipeline"],
+    github: "https://github.com/Kevin272-dot/AutoML-framework",
+    category: "AI/ML and Data Projects",
+    featured: true,
+    order: 8,
+  },
+  {
+    id: "ayu",
+    title: "AYU",
+    description:
+      "A software project focused on building a functional application with clean architecture and practical utility.",
+    tags: ["Software Development", "Application Design"],
+    github: "https://github.com/Kevin272-dot/AYU",
+    category: "Full-Stack Projects",
+    featured: true,
+    order: 9,
+  },
+  {
+    id: "finsec",
+    title: "Finsec",
+    description:
+      "A financial technology project exploring security and data handling in financial software systems.",
+    tags: ["FinTech", "Security", "Data Handling", "Software Engineering"],
+    github: "https://github.com/Kevin272-dot/Finsec",
+    category: "Full-Stack Projects",
+    featured: true,
+    order: 10,
+  },
+  {
+    id: "smart-plant",
+    title: "Smart Plant Monitoring System",
+    description:
+      "An IoT-based plant monitoring system that tracks environmental conditions and provides real-time alerts for plant care.",
+    tags: ["IoT", "Sensors", "Real-Time Monitoring", "Python", "Embedded Systems"],
+    github: "https://github.com/Kevin272-dot/smart-plant-monitoring-system-",
+    live: "https://smart-plant-monitoring-system-khaki.vercel.app",
+    category: "Featured Applications",
+    featured: true,
+    order: 11,
+  },
+  {
+    id: "equilink",
+    title: "Equilink",
+    description:
+      "A connectivity and integration platform designed to link systems and streamline data flow between components.",
+    tags: ["Integration", "API Design", "Systems Connectivity"],
+    github: "https://github.com/Kevin272-dot/equilink",
+    category: "Full-Stack Projects",
+    featured: true,
+    order: 12,
+  },
+  {
+    id: "qnn-vs-mlp",
+    title: "QNN VS MLP",
+    description:
+      "An experimental comparison of a Quantum Neural Network with a classical MLP on binary classification using variational quantum circuits.",
+    tags: ["PennyLane", "PyTorch", "scikit-learn", "Quantum Computing", "Machine Learning"],
+    github: "https://github.com/Kevin272-dot/QNN-VS-MLP",
+    category: "AI/ML and Data Projects",
+    featured: true,
+    order: 13,
+  },
+  {
+    id: "trc-translator",
+    title: "Tuple and Domain Relational Calculus Translator",
+    description:
+      "A database systems project that translates Tuple Relational Calculus and Domain Relational Calculus queries into relational algebra.",
+    tags: ["Database Systems", "Query Languages", "Compiler Design", "Relational Algebra"],
+    github: "https://github.com/Kevin272-dot/Tuple-and-Domain-Relational-Calculus-Translator",
+    category: "AI/ML and Data Projects",
+    featured: true,
+    order: 14,
+  },
+  {
+    id: "portfolio",
+    title: "Portfolio",
+    description:
+      "This portfolio website, built with Next.js, Tailwind CSS, and Framer Motion, showcasing projects and skills with a modern dark theme.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design"],
+    github: "https://github.com/Kevin272-dot/Portfolio",
+    category: "Featured Applications",
+    featured: true,
+    order: 15,
   },
 ];
-
-export const synapseDetails = {
-  overview:
-    "Synapse is a cloud-native, real-time collaborative document platform that combines rich-text editing with AI-driven knowledge management. It is designed as a single system that handles writing, connecting ideas, and generating study material — replacing the need to manually coordinate multiple tools.",
-  whyBuilt:
-    "Most collaborative writing tools stop at real-time editing. Most knowledge management tools require manual organization. Most study tools require you to upload content separately. Synapse unifies all three into a single system with a custom-built collaboration engine.",
-  techStack: [
-    "Next.js",
-    "TipTap",
-    "Custom Operational Transformation",
-    "Socket.IO",
-    "Redis",
-    "AWS",
-  ],
-  collaboration: {
-    description:
-      "Multiple users can co-edit documents simultaneously with real-time synchronization, live cursors, and presence indicators. The system uses a custom-built Operational Transformation engine designed for concurrent editing, consistency, and conflict handling.",
-    features: [
-      "Real-time synchronization",
-      "Live cursors",
-      "Presence indicators",
-      "Custom Operational Transformation engine",
-      "Concurrent editing support",
-      "Conflict resolution",
-    ],
-  },
-  ot: {
-    description:
-      "The Operational Transformation engine handles concurrent document modifications by transforming operations against each other to maintain consistency. Unlike CRDT-based approaches, OT applies a central transformation function that ensures all clients converge to the same document state.",
-    concepts: [
-      "Operation transformation",
-      "Concurrent modification handling",
-      "State convergence",
-      "Client-side buffering",
-      "Server-side coordination",
-    ],
-  },
-  knowledgeGraph: {
-    description:
-      "Synapse automatically extracts concepts from what users write and builds a live, incrementally-updating personal knowledge graph linking related notes across the workspace.",
-    pipeline: [
-      "Document",
-      "Concept Extraction",
-      "Concepts",
-      "Relationships",
-      "Knowledge Graph",
-      "Related Notes",
-    ],
-  },
-  aiPipeline: {
-    description:
-      "Study tools are generated directly from the user's own notes, eliminating the need to write somewhere, manually connect ideas elsewhere, and upload content to a separate study platform.",
-    inputs: ["User Notes"],
-    outputs: ["Summaries", "Flashcards", "Quizzes"],
-  },
-  cloudArchitecture: {
-    description:
-      "The infrastructure is designed for horizontal scaling of real-time collaboration servers.",
-    pipeline: [
-      "Client",
-      "Next.js",
-      "Application / Collaboration Layer",
-      "Socket.IO",
-      "Redis",
-      "Horizontally Scaled Real-Time Infrastructure",
-      "AWS",
-    ],
-    currentDirection:
-      "Current infrastructure direction: EC2 → ECS Fargate migration",
-    services: ["EC2", "ECS Fargate"],
-  },
-  scaling: {
-    description:
-      "Synapse is designed to scale horizontally by adding collaboration server instances behind a load balancer, with Redis handling pub/sub for cross-instance real-time synchronization.",
-    approaches: [
-      "Horizontal scaling of collaboration servers",
-      "Redis pub/sub for cross-instance sync",
-      "Stateless application layer",
-      "Connection-aware load balancing",
-    ],
-  },
-  challenges: [
-    {
-      title: "Operational Transformation Consistency",
-      description:
-        "Ensuring all clients converge to the same document state under concurrent editing requires careful transformation function design.",
-    },
-    {
-      title: "Real-Time Knowledge Graph Updates",
-      description:
-        "Extracting concepts and building relationships in real-time without introducing latency into the editing experience.",
-    },
-    {
-      title: "Horizontal Scaling of Stateful Connections",
-      description:
-        "Scaling WebSocket connections across multiple server instances while maintaining session consistency.",
-    },
-  ],
-  technicalDecisions: [
-    {
-      decision: "Custom OT over CRDT",
-      rationale:
-        "Operational Transformation was chosen for finer control over transformation semantics and simpler convergence guarantees for document editing.",
-    },
-    {
-      decision: "Redis for pub/sub",
-      rationale:
-        "Redis provides low-latency pub/sub for cross-instance real-time synchronization without introducing a separate message broker.",
-    },
-    {
-      decision: "Next.js application layer",
-      rationale:
-        "Next.js handles both the web application and API routes, reducing operational complexity.",
-    },
-  ],
-  futureWork: [
-    "ECS Fargate migration for containerized deployment",
-    "Advanced conflict resolution strategies",
-    "Distributed knowledge graph queries",
-    "Offline-first architecture",
-    "Multi-workspace collaboration",
-  ],
-  research: {
-    status: "IN PROGRESS",
-    target: "IEEE Conference",
-    intersection: [
-      "Real-Time Collaborative Consistency",
-      "Knowledge Graph Construction",
-      "AI-Generated Study Tooling",
-    ],
-    placeholders: {
-      title: "[RESEARCH TITLE]",
-      question: "[RESEARCH QUESTION]",
-      methodology: "[METHODOLOGY]",
-      evaluation: "[EVALUATION]",
-      results: "[RESULTS]",
-      conference: "[CONFERENCE]",
-      paperStatus: "[PAPER STATUS]",
-    },
-  },
-};

@@ -3,8 +3,9 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { profile } from "@/data/profile";
+import { GithubIcon } from "./Icons";
 
-function ArchitectureVisual() {
+function ParticleGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -20,122 +21,59 @@ function ArchitectureVisual() {
     canvas.height = rect.height * dpr;
     ctx.scale(dpr, dpr);
 
-    const nodes = [
-      { label: "IDEA", x: 0.5, y: 0.08 },
-      { label: "SYSTEM DESIGN", x: 0.5, y: 0.24 },
-      { label: "ENGINEERING", x: 0.5, y: 0.40 },
-      { label: "DEPLOYMENT", x: 0.5, y: 0.56 },
-      { label: "IMPACT", x: 0.5, y: 0.72 },
-      { label: "RESEARCH", x: 0.5, y: 0.88 },
-    ];
+    const w = rect.width;
+    const h = rect.height;
 
-    let animProgress = 0;
+    const particles: { x: number; y: number; vx: number; vy: number; r: number }[] = [];
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.5 + 0.5,
+      });
+    }
+
     let animFrame: number;
 
     function draw() {
-      if (!ctx || !canvas) return;
-      const w = rect.width;
-      const h = rect.height;
-
+      if (!ctx) return;
       ctx.clearRect(0, 0, w, h);
 
-      // Draw connecting lines
-      for (let i = 0; i < nodes.length - 1; i++) {
-        const from = nodes[i];
-        const to = nodes[i + 1];
-        const fromY = from.y * h;
-        const toY = to.y * h;
-        const progress = Math.min(1, Math.max(0, (animProgress - i * 0.15) / 0.3));
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
 
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(200, 168, 78, ${0.15 * progress})`;
-        ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
-        ctx.moveTo(w / 2, fromY + 12);
-        ctx.lineTo(w / 2, fromY + 12 + (toY - fromY - 24) * progress);
-        ctx.stroke();
-        ctx.setLineDash([]);
-      }
-
-      // Draw nodes
-      nodes.forEach((node, i) => {
-        const x = node.x * w;
-        const y = node.y * h;
-        const progress = Math.min(1, Math.max(0, (animProgress - i * 0.15) / 0.3));
-        const opacity = progress;
-
-        // Node dot
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(200, 168, 78, ${0.6 * opacity})`;
-        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(200, 168, 78, 0.25)";
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
-
-        // Glow
-        ctx.beginPath();
-        const gradient = ctx.createRadialGradient(x, y, 0, x, y, 16);
-        gradient.addColorStop(0, `rgba(200, 168, 78, ${0.15 * opacity})`);
-        gradient.addColorStop(1, "rgba(200, 168, 78, 0)");
-        ctx.fillStyle = gradient;
-        ctx.arc(x, y, 16, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Label
-        ctx.fillStyle = `rgba(245, 245, 240, ${0.5 * opacity})`;
-        ctx.font = "500 9px 'JetBrains Mono', monospace";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(node.label, x + 60, y);
       });
 
-      // Draw side nodes (distributed systems feel)
-      const sideNodes = [
-        { x: 0.18, y: 0.32, label: "OT" },
-        { x: 0.82, y: 0.32, label: "SYNC" },
-        { x: 0.18, y: 0.64, label: "AWS" },
-        { x: 0.82, y: 0.64, label: "REDIS" },
-        { x: 0.18, y: 0.48, label: "SOCKET" },
-        { x: 0.82, y: 0.48, label: "GRAPH" },
-      ];
-
-      sideNodes.forEach((sn, i) => {
-        const progress = Math.min(1, Math.max(0, (animProgress - 0.3 - i * 0.08) / 0.3));
-        const x = sn.x * w;
-        const y = sn.y * h;
-
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(200, 168, 78, ${0.25 * progress})`;
-        ctx.arc(x, y, 2, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = `rgba(245, 245, 240, ${0.2 * progress})`;
-        ctx.font = "400 7px 'JetBrains Mono', monospace";
-        ctx.textAlign = "center";
-        ctx.fillText(sn.label, x, y - 8);
-
-        // Connect to center
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(200, 168, 78, ${0.06 * progress})`;
-        ctx.lineWidth = 0.5;
-        ctx.moveTo(x, y);
-        ctx.lineTo(w / 2, y);
-        ctx.stroke();
-      });
-
-      if (animProgress < 2) {
-        animProgress += 0.008;
-        animFrame = requestAnimationFrame(draw);
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(200, 168, 78, ${0.06 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
       }
+
+      animFrame = requestAnimationFrame(draw);
     }
 
-    // Start animation after a brief delay
-    const timeout = setTimeout(() => {
-      animFrame = requestAnimationFrame(draw);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeout);
-      cancelAnimationFrame(animFrame);
-    };
+    animFrame = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(animFrame);
   }, []);
 
   return (
@@ -150,7 +88,6 @@ function ArchitectureVisual() {
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -160,8 +97,9 @@ export function Hero() {
         }}
       />
 
+      <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.02] via-transparent to-transparent" />
+
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left: Text */}
         <div className="space-y-8">
           <div className="space-y-2">
             {profile.hero.headline.map((line, i) => (
@@ -202,21 +140,24 @@ export function Hero() {
           >
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 bg-gold text-near-black px-6 py-3 text-sm font-medium tracking-wider hover:bg-gold-dim transition-colors"
+              className="inline-flex items-center gap-2 bg-gold text-near-black px-6 py-3 text-sm font-medium tracking-wider hover:bg-gold-dim transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,168,78,0.15)]"
             >
-              VIEW MY WORK
+              VIEW FEATURED PROJECTS
             </Link>
-            <Link
-              href="/resume"
-              className="inline-flex items-center gap-2 border border-border hover:border-border-hover px-6 py-3 text-sm font-medium tracking-wider text-text-secondary hover:text-off-white transition-colors"
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-border hover:border-gold/30 px-6 py-3 text-sm font-medium tracking-wider text-text-secondary hover:text-off-white hover:bg-gold/[0.03] transition-all duration-200"
             >
-              DOWNLOAD RESUME
-            </Link>
+              <GithubIcon size={14} />
+              GITHUB
+            </a>
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium tracking-wider text-text-tertiary hover:text-text-secondary transition-colors"
             >
-              GET IN TOUCH
+              CONTACT ME
             </Link>
           </div>
 
@@ -230,7 +171,7 @@ export function Hero() {
             {profile.hero.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] font-mono tracking-widest text-text-tertiary border border-border px-3 py-1"
+                className="text-[10px] font-mono tracking-widest text-text-tertiary border border-border px-3 py-1 hover:border-gold/20 hover:text-text-secondary transition-colors"
               >
                 {tag}
               </span>
@@ -238,7 +179,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right: Architecture Visual */}
         <div
           className="hidden lg:block h-[480px]"
           style={{
@@ -246,11 +186,10 @@ export function Hero() {
             animation: "fadeInUp 0.8s ease-out 400ms forwards",
           }}
         >
-          <ArchitectureVisual />
+          <ParticleGrid />
         </div>
       </div>
 
-      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-near-black to-transparent" />
     </section>
   );

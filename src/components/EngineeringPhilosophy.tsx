@@ -16,8 +16,10 @@ export function EngineeringPhilosophy() {
         <div className="grid md:grid-cols-3 gap-12">
           {profile.philosophy.map((item, i) => (
             <ScrollReveal key={item.number} delay={i * 150}>
-              <div className="space-y-4">
-                <span className="text-gold font-mono text-sm">{item.number}</span>
+              <div className="space-y-4 group">
+                <span className="text-gold font-mono text-sm opacity-60 group-hover:opacity-100 transition-opacity">
+                  {item.number}
+                </span>
                 <h3 className="text-sm tracking-widest uppercase text-off-white font-medium">
                   {item.title}
                 </h3>
