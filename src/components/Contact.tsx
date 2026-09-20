@@ -29,9 +29,9 @@ export function Contact() {
                 Get in touch
               </h3>
               <p className="text-text-secondary text-sm leading-relaxed">
-                I&apos;m always interested in discussing software projects, collaboration
-                opportunities, hackathon teams, and anything related to full-stack development
-                or AI/ML.
+                I&apos;m always interested in discussing software projects,
+                collaboration opportunities, hackathon teams, and anything
+                related to full-stack development or AI/ML.
               </p>
             </div>
 
@@ -81,7 +81,7 @@ export function Contact() {
               )}
 
               <a
-                href="/L_Kevin_Daniel_Resume.pdf"
+                href="/Kevin_Daniel_Resume.pdf"
                 download
                 className="flex items-center gap-3 text-sm text-text-secondary hover:text-gold transition-colors group"
                 aria-label="Download Resume"
