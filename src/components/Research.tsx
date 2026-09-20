@@ -2,27 +2,19 @@
 
 import { research } from "@/data/research";
 import { ScrollReveal } from "./ScrollReveal";
+import { SectionHeader } from "./SectionHeader";
 
 export function Research() {
   return (
     <section id="research" className="py-24 px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono tracking-widest text-gold">
-              05
-            </span>
-            <div className="h-px flex-1 bg-border" />
-            <h2 className="text-xs tracking-[0.3em] uppercase text-text-secondary">
-              Research
-            </h2>
-            <div className="h-px flex-1 bg-border" />
-          </div>
+          <SectionHeader number="05" title="Research" />
         </ScrollReveal>
 
         {/* Primary research */}
         <ScrollReveal>
-          <div className="border border-border p-8 mb-8 hover:border-gold/15 transition-all duration-300 bg-gradient-to-br from-near-black-light/40 to-transparent hover:from-near-black-light/70">
+          <div className="border border-border p-8 mb-8 hover:border-gold/25 transition-all duration-300 bg-near-black-light shadow-card hover:shadow-card-lg">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <span className="text-[10px] font-mono tracking-widest text-gold mb-2 block">
@@ -79,7 +71,7 @@ export function Research() {
 
         {/* Secondary research */}
         <ScrollReveal delay={100}>
-          <div className="border border-border p-8 mb-12 hover:border-gold/15 transition-all duration-300 bg-gradient-to-br from-near-black-light/30 to-transparent hover:from-near-black-light/60">
+          <div className="border border-border p-8 mb-12 hover:border-gold/25 transition-all duration-300 bg-near-black-light shadow-card hover:shadow-card-lg">
             <h3 className="text-lg font-light text-off-white mb-2">
               {research.secondary.title}
             </h3>

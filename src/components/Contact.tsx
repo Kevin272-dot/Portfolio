@@ -2,6 +2,7 @@
 
 import { profile } from "@/data/profile";
 import { ScrollReveal } from "./ScrollReveal";
+import { SectionHeader } from "./SectionHeader";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 
@@ -10,16 +11,7 @@ export function Contact() {
     <section id="contact" className="py-24 px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono tracking-widest text-gold">
-              03
-            </span>
-            <div className="h-px flex-1 bg-border" />
-            <h2 className="text-xs tracking-[0.3em] uppercase text-text-secondary">
-              Contact
-            </h2>
-            <div className="h-px flex-1 bg-border" />
-          </div>
+          <SectionHeader number="07" title="Contact" />
         </ScrollReveal>
 
         <ScrollReveal>
@@ -81,7 +73,7 @@ export function Contact() {
               )}
 
               <a
-                href="/Kevin_Daniel_Resume.pdf"
+                href={profile.resumeUrl}
                 download
                 className="flex items-center gap-3 text-sm text-text-secondary hover:text-gold transition-colors group"
                 aria-label="Download Resume"
@@ -110,7 +102,7 @@ export function Contact() {
             <div className="pt-8">
               <a
                 href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2 bg-gold text-near-black px-8 py-3 text-sm font-medium tracking-wider hover:bg-gold-dim transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,168,78,0.15)]"
+                className="inline-flex items-center gap-2 bg-gold text-ink px-8 py-3 text-sm font-medium tracking-wider hover:bg-gold-dim transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,168,78,0.15)]"
               >
                 SEND A MESSAGE
               </a>

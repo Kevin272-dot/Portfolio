@@ -8,7 +8,11 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/#about", label: "About" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#skills", label: "Skills" },
   { href: "/#projects", label: "Projects" },
+  { href: "/#research", label: "Research" },
+  { href: "/#resume", label: "Resume" },
   { href: "/#contact", label: "Contact" },
 ];
 
@@ -52,12 +56,12 @@ export function Navbar() {
           {profile.name}
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs tracking-widest uppercase text-text-secondary hover:text-off-white transition-colors"
+              className="text-[11px] tracking-widest uppercase text-text-secondary hover:text-off-white transition-colors"
             >
               {link.label}
             </Link>
@@ -66,7 +70,7 @@ export function Navbar() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase text-gold border border-gold/30 px-4 py-2 hover:bg-gold/10 transition-all duration-200"
+            className="text-[11px] tracking-widest uppercase text-gold border border-gold/30 px-4 py-2 hover:bg-gold/10 transition-all duration-200"
           >
             GitHub
           </a>
@@ -74,7 +78,7 @@ export function Navbar() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-off-white p-2"
+          className="lg:hidden text-off-white p-2"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -82,7 +86,7 @@ export function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden bg-near-black/98 backdrop-blur-lg border-t border-border">
+        <div className="lg:hidden bg-near-black/98 backdrop-blur-lg border-t border-border">
           <div className="flex flex-col px-6 py-6 gap-2">
             {navLinks.map((link, i) => (
               <Link

@@ -2,22 +2,14 @@
 
 import { skillCategories } from "@/data/skills";
 import { ScrollReveal } from "./ScrollReveal";
+import { SectionHeader } from "./SectionHeader";
 
 export function Skills() {
   return (
     <section id="skills" className="py-24 px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono tracking-widest text-gold">
-              04
-            </span>
-            <div className="h-px flex-1 bg-border" />
-            <h2 className="text-xs tracking-[0.3em] uppercase text-text-secondary">
-              Technical Skills
-            </h2>
-            <div className="h-px flex-1 bg-border" />
-          </div>
+          <SectionHeader number="03" title="Technical Skills" />
         </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">

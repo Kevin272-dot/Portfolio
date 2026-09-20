@@ -2,28 +2,20 @@
 
 import { experiences } from "@/data/experience";
 import { ScrollReveal } from "./ScrollReveal";
+import { SectionHeader } from "./SectionHeader";
 
 export function Experience() {
   return (
     <section id="experience" className="py-24 px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono tracking-widest text-gold">
-              03
-            </span>
-            <div className="h-px flex-1 bg-border" />
-            <h2 className="text-xs tracking-[0.3em] uppercase text-text-secondary">
-              Experience
-            </h2>
-            <div className="h-px flex-1 bg-border" />
-          </div>
+          <SectionHeader number="02" title="Experience" />
         </ScrollReveal>
 
         <div className="space-y-8">
           {experiences.map((exp, i) => (
             <ScrollReveal key={exp.id} delay={i * 100}>
-              <div className="border border-border p-8 hover:border-gold/15 transition-all duration-300 bg-gradient-to-br from-near-black-light/40 to-transparent hover:from-near-black-light/70">
+              <div className="border border-border p-8 hover:border-gold/25 transition-all duration-300 bg-near-black-light shadow-card hover:shadow-card-lg">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-6">
                   <div>
                     <span className="text-[10px] font-mono tracking-widest text-gold mb-2 block">

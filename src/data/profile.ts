@@ -1,11 +1,13 @@
 export const profile = {
-  name: "Kevin272-dot",
+  name: "L Kevin Daniel",
+  handle: "Kevin272-dot",
   shortName: "Kevin",
   title: "Full-Stack Developer | Software Developer | AI/ML Enthusiast",
-  email: "placeholder@email.com",
+  email: "lrkevindaniel@gmail.com",
   github: "https://github.com/Kevin272-dot",
   linkedin: "https://www.linkedin.com/in/l-kevin-daniel-3a2979392/",
   portfolioUrl: "https://github.com/Kevin272-dot/Portfolio",
+  resumeUrl: "/L_Kevin_Daniel_Resume.pdf",
 
   hero: {
     headline: [
@@ -38,6 +40,20 @@ export const profile = {
       "Automation & Productivity Tools",
       "Database & Systems Development",
       "Hackathon & Collaborative Projects",
+    ],
+  },
+
+  education: {
+    institution: "Vellore Institute of Technology (VIT), Chennai",
+    degree: "B.Tech, Computer Science and Engineering",
+    period: "Expected 2029",
+    cgpa: "8.69 / 10",
+    coursework: [
+      "Data Structures & Algorithms",
+      "Operating Systems",
+      "DBMS",
+      "OOP",
+      "Theory of Computation",
     ],
   },
 

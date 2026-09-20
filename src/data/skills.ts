@@ -1,11 +1,11 @@
 export const skillCategories = [
   {
     category: "LANGUAGES",
-    skills: ["C++", "C", "Python", "Java", "JavaScript", "TypeScript", "SQL", "HTML/CSS"],
+    skills: ["C++", "C", "Python", "Java", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    category: "WEB",
-    skills: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "TipTap"],
+    category: "FRAMEWORKS & LIBRARIES",
+    skills: ["Next.js", "React", "Node.js", "Flask", "Tailwind CSS", "TipTap"],
   },
   {
     category: "SYSTEMS",
@@ -23,21 +23,17 @@ export const skillCategories = [
     skills: ["PyTorch", "PennyLane", "scikit-learn", "Machine Learning", "Quantum Machine Learning"],
   },
   {
-    category: "CLOUD / INFRASTRUCTURE",
+    category: "CLOUD & DATA",
     skills: [
       "AWS",
       "EC2",
       "ECS Fargate",
       "Redis",
+      "PostgreSQL",
+      "Supabase",
       "Cloudflare Workers",
       "Turborepo",
-      "Git",
-      "GitHub",
     ],
-  },
-  {
-    category: "DATABASES",
-    skills: ["PostgreSQL", "Redis", "SQLite", "MongoDB"],
   },
   {
     category: "CORE CS",
@@ -49,5 +45,9 @@ export const skillCategories = [
       "Object-Oriented Programming",
       "Theory of Computation",
     ],
+  },
+  {
+    category: "TOOLS",
+    skills: ["Git", "GitHub", "Vitest", "Puppeteer", "Prisma"],
   },
 ];

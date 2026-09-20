@@ -5,6 +5,7 @@ import { skillCategories } from "@/data/skills";
 import { research } from "@/data/research";
 import { projects } from "@/data/projects";
 import { Download, ExternalLink } from "lucide-react";
+import { ResumePreview } from "@/components/ResumePreview";
 
 export const metadata: Metadata = {
   title: "Resume — L Kevin Daniel",
@@ -28,15 +29,15 @@ export default function ResumePage() {
           </div>
           <div className="flex gap-3">
             <a
-              href="/L_Kevin_Daniel_Resume.pdf"
+              href={profile.resumeUrl}
               download
-              className="inline-flex items-center gap-2 bg-gold text-near-black px-5 py-2.5 text-xs font-medium tracking-wider hover:bg-gold-dim transition-colors"
+              className="inline-flex items-center gap-2 bg-gold text-ink px-5 py-2.5 text-xs font-medium tracking-wider hover:bg-gold-dim transition-colors"
             >
               <Download size={14} />
               DOWNLOAD PDF
             </a>
             <a
-              href="/L_Kevin_Daniel_Resume.pdf"
+              href={profile.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-xs font-medium tracking-wider text-text-secondary hover:text-off-white hover:border-border-hover transition-colors"
@@ -47,13 +48,9 @@ export default function ResumePage() {
           </div>
         </div>
 
-        {/* Embedded PDF Viewer */}
-        <div className="mb-12 border border-border bg-near-black-light overflow-hidden">
-          <iframe
-            src="/L_Kevin_Daniel_Resume.pdf"
-            className="w-full h-[800px] sm:h-[1000px]"
-            title="Resume PDF Viewer"
-          />
+        {/* PDF Preview */}
+        <div className="mb-12">
+          <ResumePreview file={profile.resumeUrl} />
         </div>
 
         {/* Resume content — designed for print/PDF */}
@@ -100,14 +97,14 @@ export default function ResumePage() {
             <div className="mb-3">
               <div className="flex justify-between items-baseline">
                 <h3 className="text-sm font-medium text-off-white">
-                  VIT Chennai
+                  {profile.education.institution}
                 </h3>
                 <span className="text-xs text-text-tertiary font-mono">
-                  2023 — 2027
+                  {profile.education.period}
                 </span>
               </div>
               <p className="text-xs text-text-secondary">
-                B.Tech Computer Science — CGPA: 8.5+
+                {profile.education.degree} — CGPA: {profile.education.cgpa}
               </p>
             </div>
           </section>

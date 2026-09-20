@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin272-dot — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
+  title: "L Kevin Daniel — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
   description:
     "Full-stack developer and AI/ML enthusiast building web applications, intelligent systems, productivity tools, and hackathon projects.",
   keywords: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "machine learning",
   ],
   openGraph: {
-    title: "Kevin272-dot — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
+    title: "L Kevin Daniel — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
     description:
       "Full-stack developer and AI/ML enthusiast building web applications, intelligent systems, productivity tools, and hackathon projects.",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kevin272-dot — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
+    title: "L Kevin Daniel — Full-Stack Developer | Software Developer | AI/ML Enthusiast",
     description:
       "Full-stack developer and AI/ML enthusiast building web applications, intelligent systems, productivity tools, and hackathon projects.",
   },

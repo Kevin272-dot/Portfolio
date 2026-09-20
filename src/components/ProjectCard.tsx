@@ -10,7 +10,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="group p-6 border border-border hover:border-gold/20 transition-all duration-300 bg-gradient-to-br from-near-black-light/30 to-transparent hover:from-near-black-light/60 h-full flex flex-col">
+    <div className="group p-6 border border-border hover:border-gold/25 transition-all duration-300 bg-near-black-light shadow-card hover:shadow-card-lg h-full flex flex-col">
       <div className="flex items-start justify-between mb-3">
         <h3 className="text-lg font-light tracking-tight text-off-white group-hover:text-gold transition-colors">
           {project.title}

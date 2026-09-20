@@ -2,14 +2,14 @@ export const experiences = [
   {
     id: "180dc-tech-director",
     organization: "180 Degrees Consulting — VIT Chennai",
-    role: "Tech Director",
-    startDate: "Jan 2025",
+    role: "Technical Director",
+    startDate: "Aug 2026",
     endDate: "Present",
     description: [
-      "Lead technical strategy and engineering ownership for the organization's digital infrastructure, managing end-to-end delivery of web platforms and internal tools.",
-      "Architect and develop production-oriented web platforms including a Cloudflare Workers-based admin system with monorepo architecture, public API, and job processing pipeline.",
+      "Lead technical work for a student consulting organization, owning its web platforms, infrastructure, and internal tooling for 25 members.",
+      "Build and maintain the organization's production admin platform, turning workflow requirements into shipped features used by 100+ members and board users.",
+      "Architect and develop a Turborepo monorepo with Cloudflare Workers — public API, admin API, and a job-processing pipeline with authentication, role-based access, and cloud deployment.",
       "Coordinate technical initiatives across cross-functional teams, establishing code review practices, deployment workflows, and engineering standards.",
-      "Mentor junior developers on system design, version control, and production deployment practices.",
     ],
     highlights: [
       "Technical Leadership",
@@ -20,8 +20,8 @@ export const experiences = [
       "Mentoring",
     ],
     metrics: {
-      teamSize: "4-6 members",
-      impact: "3 production systems delivered",
+      teamSize: "25 members",
+      impact: "100+ members supported",
     },
   },
 ];

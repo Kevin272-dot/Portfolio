@@ -4,6 +4,7 @@ import { useState } from "react";
 import { projects, categories, type ProjectCategory } from "@/data/projects";
 import { ScrollReveal } from "./ScrollReveal";
 import { ProjectCard } from "./ProjectCard";
+import { SectionHeader } from "./SectionHeader";
 import { cn } from "@/lib/utils";
 
 export function FeaturedProjects() {
@@ -18,16 +19,7 @@ export function FeaturedProjects() {
     <section id="projects" className="py-24 px-6 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-[10px] font-mono tracking-widest text-gold">
-              02
-            </span>
-            <div className="h-px flex-1 bg-border" />
-            <h2 className="text-xs tracking-[0.3em] uppercase text-text-secondary">
-              Featured Projects
-            </h2>
-            <div className="h-px flex-1 bg-border" />
-          </div>
+          <SectionHeader number="04" title="Featured Projects" />
         </ScrollReveal>
 
         <ScrollReveal delay={50}>
@@ -37,7 +29,7 @@ export function FeaturedProjects() {
               className={cn(
                 "text-[10px] font-mono tracking-widest px-4 py-2 border transition-all duration-200",
                 activeCategory === "All"
-                  ? "text-near-black bg-gold border-gold"
+                  ? "text-ink bg-gold border-gold"
                   : "text-text-tertiary border-border hover:border-gold/30 hover:text-text-secondary"
               )}
               aria-pressed={activeCategory === "All"}
@@ -51,7 +43,7 @@ export function FeaturedProjects() {
                 className={cn(
                   "text-[10px] font-mono tracking-widest px-4 py-2 border transition-all duration-200",
                   activeCategory === cat
-                    ? "text-near-black bg-gold border-gold"
+                    ? "text-ink bg-gold border-gold"
                     : "text-text-tertiary border-border hover:border-gold/30 hover:text-text-secondary"
                 )}
                 aria-pressed={activeCategory === cat}
