@@ -17,7 +17,7 @@ export function Hero() {
           className="text-xs sm:text-sm font-semibold text-gold font-mono tracking-[0.25em] uppercase mb-6"
           style={{ opacity: 0, animation: "fadeInUp 0.6s ease-out 50ms forwards" }}
         >
-          Full-Stack Developer &middot; AI/ML Engineer &middot; VIT Chennai
+          {profile.name} &middot; Full-Stack Developer &middot; VIT Chennai
         </p>
 
         <h1

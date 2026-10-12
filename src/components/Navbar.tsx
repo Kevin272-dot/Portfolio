@@ -50,7 +50,7 @@ export function Navbar() {
           href="/"
           className="text-base font-semibold tracking-tight text-off-white hover:text-gold transition-colors"
         >
-          {profile.shortName}
+          {profile.name}
           <span className="text-gold">.</span>
         </Link>
 
