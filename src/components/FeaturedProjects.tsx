@@ -52,7 +52,7 @@ export function FeaturedProjects() {
                   <span className="font-mono text-4xl font-bold tracking-tight text-near-black-lighter group-hover:text-gold/30 transition-colors">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-gold bg-gold-subtle px-3 py-1.5 rounded-full">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-gold-dim bg-gold-subtle border border-gold/25 px-3 py-1.5 rounded-full">
                     {project.category}
                   </span>
                 </div>
@@ -68,13 +68,13 @@ export function FeaturedProjects() {
                   {project.tags.slice(0, 4).map((tag) => (
                     <span
                       key={tag}
-                      className="text-[11px] font-medium text-text-secondary bg-near-black px-3 py-1 rounded-full border border-border"
+                      className="text-[11px] font-semibold text-off-white bg-near-black-lighter/60 px-3 py-1.5 rounded-full border border-border"
                     >
                       {tag}
                     </span>
                   ))}
                   {project.tags.length > 4 && (
-                    <span className="text-[11px] font-medium text-text-tertiary px-2 py-1">
+                    <span className="text-[11px] font-semibold text-off-white bg-gold-subtle px-3 py-1.5 rounded-full border border-gold/30">
                       +{project.tags.length - 4}
                     </span>
                   )}
