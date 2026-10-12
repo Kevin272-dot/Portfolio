@@ -57,25 +57,25 @@ export default function ResumeViewer({ file, height = 620 }: ResumeViewerProps) 
   const resetZoom = () => setScale(1);
 
   return (
-    <div className="border border-border bg-near-black-light shadow-card overflow-hidden">
+    <div className="rounded-3xl border border-border bg-near-black-light shadow-card overflow-hidden">
       {/* Toolbar */}
-      <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-border bg-near-black-lighter/30 flex-wrap">
+      <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-border bg-near-black-lighter/40 flex-wrap">
         <div className="flex items-center gap-1.5">
           <button
             onClick={prevPage}
             disabled={!numPages || pageNumber <= 1}
-            className="p-1.5 text-text-secondary hover:text-off-white hover:bg-gold/10 disabled:opacity-30 disabled:hover:text-text-secondary disabled:hover:bg-transparent transition-colors"
+            className="p-2 text-text-secondary hover:text-gold hover:bg-gold-subtle rounded-full disabled:opacity-30 disabled:hover:text-text-secondary disabled:hover:bg-transparent transition-colors"
             aria-label="Previous page"
           >
             <ChevronLeft size={16} />
           </button>
-          <span className="text-[10px] font-mono tracking-wider text-text-secondary min-w-[80px] text-center tabular-nums">
+          <span className="text-[11px] font-mono font-semibold tracking-wider text-text-secondary min-w-[80px] text-center tabular-nums">
             {numPages ? `${pageNumber} / ${numPages}` : "—"}
           </span>
           <button
             onClick={nextPage}
             disabled={!numPages || pageNumber >= numPages}
-            className="p-1.5 text-text-secondary hover:text-off-white hover:bg-gold/10 disabled:opacity-30 disabled:hover:text-text-secondary disabled:hover:bg-transparent transition-colors"
+            className="p-2 text-text-secondary hover:text-gold hover:bg-gold-subtle rounded-full disabled:opacity-30 disabled:hover:text-text-secondary disabled:hover:bg-transparent transition-colors"
             aria-label="Next page"
           >
             <ChevronRight size={16} />
@@ -86,14 +86,14 @@ export default function ResumeViewer({ file, height = 620 }: ResumeViewerProps) 
           <button
             onClick={zoomOut}
             disabled={scale <= 0.5}
-            className="p-1.5 text-text-secondary hover:text-off-white hover:bg-gold/10 disabled:opacity-30 transition-colors"
+            className="p-2 text-text-secondary hover:text-gold hover:bg-gold-subtle rounded-full disabled:opacity-30 transition-colors"
             aria-label="Zoom out"
           >
             <ZoomOut size={14} />
           </button>
           <button
             onClick={resetZoom}
-            className="text-[10px] font-mono tracking-wider text-text-tertiary hover:text-gold px-1.5 py-1 transition-colors tabular-nums"
+            className="text-[11px] font-mono font-semibold tracking-wider text-text-tertiary hover:text-gold px-2 py-1.5 transition-colors tabular-nums"
             aria-label="Reset zoom"
           >
             {Math.round(scale * 100)}%
@@ -101,7 +101,7 @@ export default function ResumeViewer({ file, height = 620 }: ResumeViewerProps) 
           <button
             onClick={zoomIn}
             disabled={scale >= 2.5}
-            className="p-1.5 text-text-secondary hover:text-off-white hover:bg-gold/10 disabled:opacity-30 transition-colors"
+            className="p-2 text-text-secondary hover:text-gold hover:bg-gold-subtle rounded-full disabled:opacity-30 transition-colors"
             aria-label="Zoom in"
           >
             <ZoomIn size={14} />
@@ -113,7 +113,7 @@ export default function ResumeViewer({ file, height = 620 }: ResumeViewerProps) 
             href={file}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1.5 text-text-secondary hover:text-off-white hover:bg-gold/10 transition-colors"
+            className="p-2 text-text-secondary hover:text-gold hover:bg-gold-subtle rounded-full transition-colors"
             aria-label="Open PDF in new tab"
           >
             <ExternalLink size={14} />
@@ -121,7 +121,7 @@ export default function ResumeViewer({ file, height = 620 }: ResumeViewerProps) 
           <a
             href={file}
             download
-            className="p-1.5 text-text-secondary hover:text-off-white hover:bg-gold/10 transition-colors"
+            className="p-2 text-text-secondary hover:text-gold hover:bg-gold-subtle rounded-full transition-colors"
             aria-label="Download PDF"
           >
             <Download size={14} />
@@ -131,7 +131,7 @@ export default function ResumeViewer({ file, height = 620 }: ResumeViewerProps) 
 
       {/* Document viewport */}
       <div
-        className="overflow-auto flex justify-center py-6 px-4 bg-near-black-lighter/40"
+        className="overflow-auto flex justify-center py-8 px-5 bg-near-black-lighter/30"
         style={{ maxHeight: height }}
       >
         {failed ? (
@@ -158,11 +158,11 @@ export default function ResumeViewer({ file, height = 620 }: ResumeViewerProps) 
       </div>
 
       {/* Footer status */}
-      <div className="flex items-center justify-between px-4 py-2 border-t border-border bg-near-black-lighter/30">
-        <span className="text-[9px] font-mono tracking-widest text-text-tertiary">
+      <div className="flex items-center justify-between px-5 py-2.5 border-t border-border bg-near-black-lighter/40">
+        <span className="text-[10px] font-mono font-semibold tracking-widest text-text-tertiary">
           {loaded ? "PREVIEW READY" : "LOADING PREVIEW"}
         </span>
-        <span className="text-[9px] font-mono tracking-widest text-text-tertiary">
+        <span className="text-[10px] font-mono font-semibold tracking-widest text-text-tertiary">
           {numPages ? `${numPages} PAGE${numPages > 1 ? "S" : ""}` : ""}
         </span>
       </div>

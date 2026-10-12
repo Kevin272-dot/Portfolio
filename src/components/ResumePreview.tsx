@@ -6,8 +6,8 @@ import { FileText } from "lucide-react";
 const ResumeViewer = dynamic(() => import("./ResumeViewer"), {
   ssr: false,
   loading: () => (
-    <div className="border border-border bg-near-black-light/30">
-      <div className="flex items-center justify-center h-[620px] bg-near-black-lighter/40 animate-pulse">
+    <div className="rounded-3xl border border-border bg-near-black-light shadow-card">
+      <div className="flex items-center justify-center h-[620px] bg-near-black-lighter/30 animate-pulse">
         <div className="flex items-center gap-3 text-text-tertiary">
           <FileText size={16} className="animate-pulse-gold" />
           <span className="text-xs font-mono tracking-widest">LOADING RESUME…</span>

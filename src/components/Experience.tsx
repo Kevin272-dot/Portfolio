@@ -2,71 +2,72 @@
 
 import { experiences } from "@/data/experience";
 import { ScrollReveal } from "./ScrollReveal";
-import { SectionHeader } from "./SectionHeader";
+import { SectionHeading } from "./SectionHeading";
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 px-6 border-t border-border">
+    <section id="experience" className="py-24 sm:py-32 px-6 border-t border-border bg-near-black-light/40">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <SectionHeader number="02" title="Experience" />
+          <SectionHeading index="02" title="Experience" />
         </ScrollReveal>
 
         <div className="space-y-8">
           {experiences.map((exp, i) => (
             <ScrollReveal key={exp.id} delay={i * 100}>
-              <div className="border border-border p-8 hover:border-gold/25 transition-all duration-300 bg-near-black-light shadow-card hover:shadow-card-lg">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-6">
+              <article className="rounded-3xl border border-border bg-near-black p-10 sm:p-12 shadow-card hover:shadow-card-lg transition-shadow duration-300 group">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-8">
                   <div>
-                    <span className="text-[10px] font-mono tracking-widest text-gold mb-2 block">
+                    <span className="font-mono text-xs font-semibold uppercase tracking-widest text-gold mb-3 block">
                       {exp.role}
                     </span>
-                    <h3 className="text-lg font-light text-off-white">
+                    <h3 className="text-3xl sm:text-4xl font-bold tracking-tight text-off-white leading-tight">
                       {exp.organization}
                     </h3>
                   </div>
-                  <span className="text-xs text-text-tertiary font-mono mt-2 sm:mt-0">
+                  <span className="font-mono text-xs font-semibold text-text-secondary bg-near-black-lighter/70 px-4 py-2 rounded-full whitespace-nowrap self-start sm:self-auto">
                     {exp.startDate} — {exp.endDate}
                   </span>
                 </div>
 
-                <div className="space-y-3 mb-6">
+                <div className="grid sm:grid-cols-2 gap-x-10 gap-y-4 mb-8">
                   {exp.description.map((desc, j) => (
-                    <p
-                      key={j}
-                      className="text-text-secondary text-sm leading-relaxed"
-                    >
+                    <p key={j} className="text-text-secondary text-sm sm:text-base leading-relaxed">
                       {desc}
                     </p>
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-8">
                   {exp.highlights.map((h) => (
                     <span
                       key={h}
-                      className="text-[10px] font-mono tracking-wider text-gold/70 border border-gold/15 px-3 py-1 hover:border-gold/30 hover:text-gold/90 transition-colors"
+                      className="text-xs font-medium text-gold bg-gold-subtle px-3.5 py-1.5 rounded-full"
                     >
                       {h}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-6 text-xs text-text-tertiary pt-2 border-t border-border/50">
-                  <span>
-                    Team:{" "}
-                    <span className="text-text-secondary">
-                      {exp.metrics.teamSize}
+                <div className="flex flex-wrap gap-x-12 gap-y-4 pt-8 border-t border-border">
+                  <div>
+                    <span className="block text-3xl font-bold tracking-tight text-off-white">
+                      {exp.metrics.teamSize.split(" ")[0]}
                     </span>
-                  </span>
-                  <span>
-                    Impact:{" "}
-                    <span className="text-text-secondary">
-                      {exp.metrics.impact}
+                    <span className="text-xs font-mono uppercase tracking-widest text-text-tertiary">
+                      {exp.metrics.teamSize.split(" ").slice(1).join(" ") || "team members"}
                     </span>
-                  </span>
+                  </div>
+                  <div>
+                    <span className="block text-3xl font-bold tracking-tight text-off-white">
+                      {exp.metrics.impact.split(" ")[0]}
+                    </span>
+                    <span className="text-xs font-mono uppercase tracking-widest text-text-tertiary">
+                      {exp.metrics.impact.split(" ").slice(1).join(" ") || "people supported"}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </article>
             </ScrollReveal>
           ))}
         </div>

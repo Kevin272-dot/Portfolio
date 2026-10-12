@@ -1,221 +1,85 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { ArrowUpRight, Download } from "lucide-react";
 import { profile } from "@/data/profile";
-import { GithubIcon } from "./Icons";
-
-function ParticleGrid() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-
-    const w = rect.width;
-    const h = rect.height;
-
-    const particles: { x: number; y: number; vx: number; vy: number; r: number; phase: number }[] = [];
-    for (let i = 0; i < 44; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 2.2 + 1.4,
-        phase: Math.random() * Math.PI * 2,
-      });
-    }
-
-    let animFrame: number;
-
-    function draw() {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, w, h);
-
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-
-        const pulse = 0.75 + 0.25 * Math.sin(performance.now() / 700 + p.phase);
-
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(160, 124, 30, ${0.55 * pulse})`;
-        ctx.arc(p.x, p.y, p.r * 2, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.shadowColor = "rgba(160, 124, 30, 0.9)";
-        ctx.shadowBlur = 8;
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(180, 142, 44, ${0.95 * pulse})`;
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        ctx.beginPath();
-        ctx.fillStyle = "rgba(255, 245, 214, 0.95)";
-        ctx.arc(p.x, p.y, p.r * 0.45, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(160, 124, 30, ${0.32 * (1 - dist / 150)})`;
-            ctx.lineWidth = 0.9;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      animFrame = requestAnimationFrame(draw);
-    }
-
-    animFrame = requestAnimationFrame(draw);
-    return () => cancelAnimationFrame(animFrame);
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full"
-      style={{ width: "100%", height: "100%" }}
-    />
-  );
-}
+import { Marquee } from "./Marquee";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(28,28,28,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(28,28,28,0.05) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
+    <section id="top" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      {/* Blue ambient glow */}
+      <div className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full bg-gold/[0.14] blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-48 -left-40 w-[480px] h-[480px] rounded-full bg-gold/[0.09] blur-[110px] pointer-events-none" />
 
-      <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.07] via-transparent to-transparent" />
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-36 pb-20 w-full">
+        <p
+          className="text-xs sm:text-sm font-semibold text-gold font-mono tracking-[0.25em] uppercase mb-6"
+          style={{ opacity: 0, animation: "fadeInUp 0.6s ease-out 50ms forwards" }}
+        >
+          Full-Stack Developer &middot; AI/ML Engineer &middot; VIT Chennai
+        </p>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-8">
-          <div className="space-y-2">
-            <p
-              className="text-[11px] font-mono tracking-[0.3em] text-gold uppercase"
-              style={{
-                opacity: 0,
-                animation: "fadeInUp 0.6s ease-out 100ms forwards",
-              }}
-            >
-              {profile.name}
-            </p>
-            {profile.hero.headline.map((line, i) => (
-              <h1
-                key={i}
-                className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-off-white"
-                style={{
-                  animationDelay: `${i * 150}ms`,
-                  opacity: 0,
-                  animation: `fadeInUp 0.6s ease-out ${i * 150}ms forwards`,
-                }}
-              >
-                {i === 1 ? (
-                  <span className="text-gold">{line}</span>
-                ) : (
-                  line
-                )}
-              </h1>
-            ))}
-          </div>
+        <h1
+          className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] text-off-white"
+          style={{ opacity: 0, animation: "fadeInUp 0.7s ease-out 150ms forwards" }}
+        >
+          Building <span className="text-gold">web apps.</span>
+          <br />
+          Crafting <span className="text-gold">intelligent systems.</span>
+          <br />
+          Shipping at <span className="text-gold">hackathons.</span>
+        </h1>
 
-          <p
-            className="text-text-secondary text-base leading-relaxed max-w-lg"
-            style={{
-              opacity: 0,
-              animation: "fadeInUp 0.6s ease-out 600ms forwards",
-            }}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-10">
+          <Link
+            href="/#work"
+            className="inline-flex items-center gap-2 bg-gold text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-gold-dim transition-all duration-200 hover:shadow-[0_12px_32px_-8px_rgba(37,99,235,0.55)]"
           >
-            {profile.hero.supporting}
-          </p>
-
-          <div
-            className="flex flex-wrap gap-3"
-            style={{
-              opacity: 0,
-              animation: "fadeInUp 0.6s ease-out 800ms forwards",
-            }}
+            View selected work
+            <ArrowUpRight size={18} />
+          </Link>
+          <a
+            href={profile.resumeUrl}
+            download
+            className="inline-flex items-center gap-2 border-2 border-border text-off-white px-8 py-4 rounded-full text-base font-semibold hover:border-gold hover:text-gold transition-all duration-200"
           >
-            <Link
-              href="/#projects"
-              className="inline-flex items-center gap-2 bg-gold text-ink px-6 py-3 text-sm font-medium tracking-wider hover:bg-gold-dim transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,168,78,0.15)]"
-            >
-              VIEW FEATURED PROJECTS
-            </Link>
-            <Link
-              href="/#resume"
-              className="inline-flex items-center gap-2 border border-border hover:border-gold/30 px-6 py-3 text-sm font-medium tracking-wider text-text-secondary hover:text-off-white hover:bg-gold/[0.03] transition-all duration-200"
-            >
-              VIEW RESUME
-            </Link>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium tracking-wider text-text-tertiary hover:text-text-secondary transition-colors"
-            >
-              <GithubIcon size={14} />
-              GITHUB
-            </a>
-          </div>
-
-          <div
-            className="flex flex-wrap gap-2 pt-4"
-            style={{
-              opacity: 0,
-              animation: "fadeInUp 0.6s ease-out 1000ms forwards",
-            }}
-          >
-            {profile.hero.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] font-mono tracking-widest text-text-tertiary border border-border px-3 py-1 hover:border-gold/20 hover:text-text-secondary transition-colors"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+            <Download size={16} />
+            Download resume
+          </a>
         </div>
 
-        <div
-          className="hidden lg:block h-[480px]"
-          style={{
-            opacity: 0,
-            animation: "fadeInUp 0.8s ease-out 400ms forwards",
-          }}
+        <p
+          className="mt-10 max-w-xl text-base sm:text-lg text-text-secondary leading-relaxed"
+          style={{ opacity: 0, animation: "fadeInUp 0.6s ease-out 350ms forwards" }}
         >
-          <ParticleGrid />
+          {profile.hero.supporting}
+        </p>
+      </div>
+
+      {/* Stats strip */}
+      <div
+        className="relative z-10 border-y border-border bg-near-black-light/60"
+        style={{ opacity: 0, animation: "fadeInUp 0.6s ease-out 500ms forwards" }}
+      >
+        <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {profile.stats.map((stat) => (
+            <div key={stat.label} className="flex flex-col">
+              <span className="text-3xl sm:text-4xl font-bold tracking-tight text-off-white">
+                {stat.value}
+              </span>
+              <span className="text-xs font-mono uppercase tracking-widest text-text-tertiary mt-1">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-near-black to-transparent" />
+      {/* Ticker */}
+      <div className="relative z-10 py-5 border-b border-border overflow-hidden">
+        <Marquee items={profile.marquee} />
+      </div>
     </section>
   );
 }

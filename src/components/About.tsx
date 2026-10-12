@@ -2,69 +2,57 @@
 
 import { profile } from "@/data/profile";
 import { ScrollReveal } from "./ScrollReveal";
-import { SectionHeader } from "./SectionHeader";
-import { GraduationCap } from "lucide-react";
+import { SectionHeading } from "./SectionHeading";
+import { GraduationCap, ArrowUpRight } from "lucide-react";
 
 export function About() {
   return (
-    <section id="about" className="py-24 px-6 border-t border-border">
+    <section id="about" className="py-24 sm:py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <SectionHeader number="01" title="About" />
+          <SectionHeading index="01" title="About me" />
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-3 gap-16">
-          <div className="lg:col-span-2 space-y-6">
-            {profile.about.paragraphs.map((paragraph, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <p className="text-text-secondary leading-relaxed text-sm">
+        <div className="grid lg:grid-cols-5 gap-12">
+          <div className="lg:col-span-3 space-y-6">
+            <ScrollReveal>
+              <p className="text-2xl sm:text-3xl font-semibold tracking-tight text-off-white leading-snug">
+                <span className="text-gold">I&apos;m a full-stack developer</span>{" "}
+                building web applications, intelligent systems, and automation
+                tools across frontend, backend, databases, and AI/ML pipelines.
+              </p>
+            </ScrollReveal>
+            {profile.about.paragraphs.slice(1).map((paragraph, i) => (
+              <ScrollReveal key={i} delay={i * 80}>
+                <p className="text-base sm:text-lg text-text-secondary leading-relaxed">
                   {paragraph}
                 </p>
               </ScrollReveal>
             ))}
           </div>
 
-          <div className="space-y-10">
-            <ScrollReveal delay={150}>
-              <div className="space-y-4">
-                <h3 className="text-[10px] font-mono tracking-widest text-gold mb-6">
-                  FOCUS AREAS
+          <div className="lg:col-span-2 space-y-8">
+            <ScrollReveal delay={120}>
+              <div className="rounded-3xl border border-border bg-near-black-light p-8 shadow-card">
+                <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-gold mb-6 flex items-center gap-2">
+                  <GraduationCap size={14} />
+                  Education
                 </h3>
-                <div className="space-y-3">
-                  {profile.about.interests.map((interest) => (
-                    <div
-                      key={interest}
-                      className="flex items-center gap-3 text-sm text-text-secondary group"
-                    >
-                      <div className="w-1 h-1 bg-gold/40 group-hover:bg-gold transition-colors" />
-                      {interest}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={250}>
-              <div className="border border-border p-6 bg-near-black-light shadow-card">
-                <h3 className="text-[10px] font-mono tracking-widest text-gold mb-5 flex items-center gap-2">
-                  <GraduationCap size={12} />
-                  EDUCATION
-                </h3>
-                <p className="text-sm font-medium text-off-white mb-1">
-                  {profile.education.institution}
-                </p>
-                <p className="text-xs text-text-secondary mb-3">
+                <p className="text-xl font-semibold tracking-tight text-off-white leading-tight mb-1">
                   {profile.education.degree}
                 </p>
-                <div className="flex flex-wrap gap-x-5 gap-y-1 text-[10px] font-mono tracking-wider text-text-tertiary mb-4">
-                  <span>CGPA: {profile.education.cgpa}</span>
+                <p className="text-sm text-text-secondary mb-4">
+                  {profile.education.institution}
+                </p>
+                <div className="flex flex-wrap gap-x-6 gap-y-1 text-xs font-mono tracking-wider text-text-tertiary mb-5">
+                  <span>CGPA {profile.education.cgpa}</span>
                   <span>{profile.education.period}</span>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {profile.education.coursework.map((course) => (
                     <span
                       key={course}
-                      className="text-[9px] font-mono tracking-wider text-text-tertiary border border-border px-2 py-0.5"
+                      className="text-[11px] font-medium text-text-secondary bg-near-black-lighter/70 px-3 py-1.5 rounded-full"
                     >
                       {course}
                     </span>
@@ -72,25 +60,29 @@ export function About() {
                 </div>
               </div>
             </ScrollReveal>
-          </div>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-12 mt-20 border-t border-border pt-16">
-          {profile.philosophy.map((item, i) => (
-            <ScrollReveal key={item.number} delay={i * 150}>
-              <div className="space-y-4 group">
-                <span className="text-gold font-mono text-sm opacity-60 group-hover:opacity-100 transition-opacity">
-                  {item.number}
-                </span>
-                <h3 className="text-sm tracking-widest uppercase text-off-white font-medium">
-                  {item.title}
+            <ScrollReveal delay={200}>
+              <div className="space-y-3">
+                <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-text-tertiary mb-4">
+                  Focus areas
                 </h3>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                {profile.about.interests.map((interest) => (
+                  <div
+                    key={interest}
+                    className="flex items-center justify-between group cursor-default"
+                  >
+                    <span className="text-base text-text-secondary group-hover:text-off-white transition-colors">
+                      {interest}
+                    </span>
+                    <ArrowUpRight
+                      size={16}
+                      className="text-gold opacity-0 group-hover:opacity-100 transition-opacity"
+                    />
+                  </div>
+                ))}
               </div>
             </ScrollReveal>
-          ))}
+          </div>
         </div>
       </div>
     </section>

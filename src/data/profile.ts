@@ -9,6 +9,24 @@ export const profile = {
   portfolioUrl: "https://github.com/Kevin272-dot/Portfolio",
   resumeUrl: "/L_Kevin_Daniel_Resume.pdf",
 
+  stats: [
+    { value: "15+", label: "Projects shipped" },
+    { value: "3", label: "Production systems" },
+    { value: "500+", label: "Event participants" },
+    { value: "8.69", label: "CGPA / 10" },
+  ],
+
+  marquee: [
+    "FULL-STACK",
+    "AI / ML",
+    "HACKATHONS",
+    "REAL-TIME SYSTEMS",
+    "CLOUD INFRASTRUCTURE",
+    "AUTOMATION",
+    "PRODUCTIVITY TOOLS",
+    "OPEN SOURCE",
+  ],
+
   hero: {
     headline: [
       "Building web apps.",

@@ -20,7 +20,7 @@ export default function ResumePage() {
         {/* Header with download */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-off-white mb-1">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-off-white mb-1">
               Resume
             </h1>
             <p className="text-xs text-text-tertiary font-mono tracking-wider">
@@ -31,7 +31,7 @@ export default function ResumePage() {
             <a
               href={profile.resumeUrl}
               download
-              className="inline-flex items-center gap-2 bg-gold text-ink px-5 py-2.5 text-xs font-medium tracking-wider hover:bg-gold-dim transition-colors"
+              className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-full text-xs font-semibold tracking-wider hover:bg-gold-dim transition-colors"
             >
               <Download size={14} />
               DOWNLOAD PDF
@@ -40,7 +40,7 @@ export default function ResumePage() {
               href={profile.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-xs font-medium tracking-wider text-text-secondary hover:text-off-white hover:border-border-hover transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-border px-6 py-3 rounded-full text-xs font-semibold tracking-wider text-text-secondary hover:text-gold hover:border-gold transition-colors"
             >
               <ExternalLink size={14} />
               OPEN IN NEW TAB
@@ -54,10 +54,10 @@ export default function ResumePage() {
         </div>
 
         {/* Resume content — designed for print/PDF */}
-        <div className="bg-near-black border border-border p-8 sm:p-12 print:p-8 print:border-none">
+        <div className="bg-near-black-light border border-border rounded-3xl p-8 sm:p-12 shadow-card print:p-8 print:border-none print:shadow-none print:rounded-none">
           {/* Header */}
           <header className="mb-8 border-b border-border pb-6">
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-off-white mb-2">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-off-white mb-2">
               {profile.name}
             </h2>
             <p className="text-sm text-text-secondary mb-4">
